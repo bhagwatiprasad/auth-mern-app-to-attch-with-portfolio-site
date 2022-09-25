@@ -11,6 +11,8 @@ import ResetPass from "./pages/ResetPass";
 import { useSelector, useDispatch } from "react-redux";
 import { login, logout } from "./features/auth";
 import { useEffect } from "react";
+import NavBar from "./components/NavBar";
+import ProtectedRoutes from "./protectedRoutes/ProtectedRoutes";
 
 let isFirst = true;
 function App() {
@@ -19,8 +21,8 @@ function App() {
   const auth = useSelector((state) => state.auth);
   console.log("auth : ", JSON.stringify(auth));
 
-  useEffect(()=>{
-    if(!isFirst) return ;
+  useEffect(() => {
+    if (!isFirst) return;
     isFirst = false;
     setTimeout(() => {
       dispatch(
@@ -33,36 +35,34 @@ function App() {
       );
     }, 10000);
     setTimeout(() => {
-      dispatch(
-        logout()
-      );
+      dispatch(logout());
     }, 20000);
-  } , [])
+  }, []);
   return (
     <>
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route exact path="/about">
-          <About />
-        </Route>
-        <Route exact path="/dashboard">
-          <Dashboard />
-        </Route>
-        <Route exact path="/forgetPass">
-          <ForgetPass />
-        </Route>
-        <Route exact path="/login">
-          <Login />
-        </Route>
-        <Route exact path="/register">
-          <Register />
-        </Route>
-        <Route exact path="/resetPass">
-          <ResetPass />
-        </Route>
-      </Switch>
+      <NavBar />
+      <div className="body">
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/about">
+            <About />
+          </Route>
+          <ProtectedRoutes exact path="/dashboard" comp={Dashboard} />
+
+          <Route exact path="/forgetPass">
+            <ForgetPass />
+          </Route>
+          <Route exact path="/login">
+            <Login />
+          </Route>
+          <Route exact path="/register">
+            <Register />
+          </Route>
+          <ProtectedRoutes exact path="/resetPass" comp={ResetPass} />
+        </Switch>
+      </div>
     </>
   );
 }
