@@ -1,0 +1,69 @@
+
+* {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+.CommonCard{
+  width: 100%;
+  height: 100%;
+  background-color: antiquewhite;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.largeBeautyText{
+  font-size: 50px;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+}
+
+#root{
+  width: 100%;
+  height: 100%;
+}
+
+.verticalStack{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.p1{
+  padding: 1rem;
+}
+
+.p0-5{
+  padding: 0.5rem;
+}
+
+.border{
+  border: 1px solid black;
+}
+
+.fs-1{
+  font-size: 1rem;
+}
+
+.fs-1-2{
+  font-size: 1.2rem;
+}
+
+.w-1{
+  width: 1rem;
+}
+
+.h-1{
+  height: 1rem;
+}
